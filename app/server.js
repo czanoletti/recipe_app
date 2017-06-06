@@ -4,11 +4,12 @@ let express = require('express'),
     pg = require('pg'),
     helmet = require('helmet'),
     morgan = require('morgan'),
-    favicon = require('serve-favicon'),
     bp = require('body-parser');
 
 //Connecting to pg
-let conString = "postgres://WebOwl:@localhost/recipes";
+let conString = "postgres://nlnycdshfdgcdj:3c2fc11d1b38f1851249476628c40bec880907683a32745c8686f1abe0298543@ec2-54-225-68-71.compute-1.amazonaws.com:5432/d8dsrpplqvgv58";
+
+let port = process.env.PORT || 80;
 
 
 //Configuring Express
@@ -17,7 +18,6 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.use(bp.json());
 app.use(bp.urlencoded({extended: false}));
-app.use(favicon(path.join(__dirname, 'favicon', 'logo.ico')));
 app.use(helmet());
 app.use(morgan('tiny'));
 
@@ -102,6 +102,6 @@ app.post('/edit', (req, res)=>{
 
 });
 
-app.listen(3000, ()=>{
-    console.log('listening 3000');
+app.listen(port, ()=>{
+    console.log(`listening ${port}`);
 });

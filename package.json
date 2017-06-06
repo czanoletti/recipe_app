@@ -1,13 +1,14 @@
 {
   "name": "recipe-demo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple node app wit PostgreSQL as database and Pug as template engines.",
+  "main": "app/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+    "preinstall": "npm install pm2 -g",
+    "start": "pm2 start --attach app/server.js"
+    },
+  "author": "binaryhusky",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
@@ -17,5 +18,8 @@
   "devDependencies": {
     "helmet": "^3.6.1",
     "morgan": "^1.8.2"
+  },
+  "engines": {
+    "node": "7.3.0"
   }
 }
